@@ -12,6 +12,9 @@ UCLASS()
 class S05_TESTINGGROUNDS_API APatrollingGuard : public ATP_ThirdPersonCharacter
 {
 	GENERATED_BODY()
+
+public:
+	TArray<AActor*> GetPatrolPoints() const { return PatrolPointsCPP; };
 	
 protected:
 	UPROPERTY(EditAnywhere, Category = "Setup")
