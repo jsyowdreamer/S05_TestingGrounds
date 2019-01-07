@@ -3,7 +3,6 @@
 #include "S05_TestingGrounds.h"
 #include "ChooseNextWaypoint.h"
 #include "BehaviorTree/BlackboardComponent.h"
-#include "TP_ThirdPerson/TP_ThirdPersonCharacter.h"
 #include "AIController.h"
 #include "PatrolRoute.h"
 
@@ -15,7 +14,8 @@ EBTNodeResult::Type UChooseNextWaypoint::ExecuteTask(UBehaviorTreeComponent& Own
 	//UE_LOG(LogTemp, Warning, TEXT("Waypoint index %i"), Index);
 
 	auto AIController = OwnerComp.GetAIOwner();
-	auto PatrollingGuard = Cast<ATP_ThirdPersonCharacter>(AIController->GetPawn());
+	auto PatrollingGuard = AIController->GetPawn();
+	if (!ensure(PatrollingGuard)) {return EBTNodeResult::Failed;}
 	auto PatrolRoute = PatrollingGuard->FindComponentByClass<UPatrolRoute>();
 	
 	if (!PatrolRoute) { return  EBTNodeResult::Failed; }
