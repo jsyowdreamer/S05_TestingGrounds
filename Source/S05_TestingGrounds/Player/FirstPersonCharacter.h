@@ -4,6 +4,7 @@
 #include "FirstPersonCharacter.generated.h"
 
 class UInputComponent;
+class AGun;
 
 UCLASS(config=Game)
 class AFirstPersonCharacter : public ACharacter
@@ -35,6 +36,11 @@ public:
 	FVector GunOffset;
 
 protected:
+
+	UPROPERTY(EditDefaultsOnly, Category = "Setup")
+	TSubclassOf<AGun> GunBlueprint;
+
+	AGun* Gun = nullptr;
 	
 	/** Handles moving forward/backward */
 	void MoveForward(float Val);
