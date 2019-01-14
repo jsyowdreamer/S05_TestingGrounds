@@ -21,14 +21,14 @@ public:
 	// Called every frame
 	virtual void Tick( float DeltaSeconds ) override;
 
-protected:
-
 	/** Fires a projectile. */
 	void OnFire();
 
 	/** AnimMontage to play each time we fire */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
 	class UAnimInstance* AnimInstance;
+
+protected:
 
 	/** Gun mesh: 1st person view (seen only by self) */
 	UPROPERTY(VisibleDefaultsOnly, Category = Mesh)
