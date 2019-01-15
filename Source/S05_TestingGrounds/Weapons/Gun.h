@@ -22,6 +22,7 @@ public:
 	virtual void Tick( float DeltaSeconds ) override;
 
 	/** Fires a projectile. */
+	UFUNCTION(BlueprintCallable, Category = "Input")
 	void OnFire();
 
 	/** AnimMontage to play each time we fire */
